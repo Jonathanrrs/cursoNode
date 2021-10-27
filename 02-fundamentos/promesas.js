@@ -69,12 +69,26 @@ const getSalario = (id) => {
 //     .catch(err => console.log(err))
 
 
-getEmpleado(3)
+// getEmpleado(3)
+//     .then(empleado => {
+//         getSalario(3)
+//             .then(salario => {
+//                 console.log('El empleado:', empleado, 'tiene un salario de:', salario);
+//             })
+//             .catch(err => console.log(err))
+//     })
+//     .catch(err => console.log(err))
+
+
+
+/* Promesas en cadena */
+
+let nombre;
+
+getEmpleado(2)
     .then(empleado => {
-        getSalario(3)
-            .then(salario => {
-                console.log('El empleado:', empleado, 'tiene un salario de:', salario);
-            })
-            .catch(err => console.log(err))
+        nombre = empleado;
+        return getSalario(2); /* no necesita el then aqui */
     })
+    .then(salario => console.log('El empleado:', nombre, 'tiene un salario:', salario))
     .catch(err => console.log(err))
