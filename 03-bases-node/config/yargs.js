@@ -12,6 +12,11 @@ const argv = require('yargs')
                             default: false,
                             describe: 'Muestra la tabla en consola'
                         })
+                        .option('h', {
+                            alias: 'hasta',
+                            type: 'number',
+                            describe: 'Es el rango de la tabla'
+                        })
                         .check((argv, options) => {
                             if(isNaN(argv.base)) {
                                 throw 'La base debe ser un número'

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const colors = require('colors');
 
-const crearArchivo = async (num = 10, listar) => {
+const crearArchivo = async (num = 10, listar, hasta = 10) => {
 
     try {
       
@@ -11,14 +11,16 @@ const crearArchivo = async (num = 10, listar) => {
 
 
         let salida = '';
-        for (let index = 1; index <= 10; index++) {
+        let consola = '';
+        for (let index = 1; index <= hasta; index++) {
 
             const multiplicar = num * index;
-            salida += `${num} ${'x'.green} ${index} ${'='.green} ${multiplicar}\n`; /* \n salto de linea */
+            consola += `${num} ${'x'.green} ${index} ${'='.green} ${multiplicar}\n`; /* \n salto de linea */
+            salida += `${num} x ${index} = ${multiplicar}\n`; /* \n salto de linea */
         }
 
         if(listar) {
-            console.log(salida);
+            console.log(consola);
         }
 
         fs.writeFileSync(`tabla-${num}.txt`, salida);
