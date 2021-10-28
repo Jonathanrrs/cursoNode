@@ -1,7 +1,1 @@
-[
-    {
-        "id": "440bfb34-a706-4616-b6a2-923b0bd32364",
-        "desc": "Programar en node js",
-        "completadoEn": null
-    }
-]
+[{"id":"440bfb34-a706-4616-b6a2-923b0bd32364","desc":"Programar en node js","completadoEn":true},{"id":"2c4d4eff-1f45-4b38-bd7d-aec63acc1c7f","desc":"Ir al cine","completadoEn":null}]
