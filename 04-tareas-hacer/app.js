@@ -14,13 +14,13 @@ const Tareas = require('./models/tareas');
 
 
 const main = async () => {
-    console.log('hola mundo');
 
     let opt = '';
 
     const tareas = new Tareas();
 
     do {
+        /* imprimir menú */
         opt = await inquirerMenu();
         
         switch (opt) {
@@ -29,7 +29,7 @@ const main = async () => {
                 tareas.crearTarea(desc);
             break;
             case '2':
-                console.log(tareas._listado);
+                console.log(tareas.listadoArr);
             break
         }
        
