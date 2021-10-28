@@ -5,9 +5,10 @@ const { guardarDB, leerDB } = require('./helpers/guardarArchivo');
 const { 
     inquirerMenu,
      pausaMenu, 
-     leerInput 
+     leerInput,
+     listadoTareasBorrar
 } = require('./helpers/inquirer');
-const Tarea = require('./models/tarea');
+// const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
 
 
@@ -46,6 +47,10 @@ const main = async () => {
                 case '4':
                 tareas.listarPendientesCompletadas(false);
                 // tareas.listarPendientes();
+            break
+            case '6':
+                const id = await listadoTareasBorrar(tareas.listadoArr);
+                console.log({id});
             break
         }
        
