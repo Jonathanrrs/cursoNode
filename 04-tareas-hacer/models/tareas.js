@@ -32,10 +32,42 @@ class Tareas {
 
     listadoCompleto() {
        
-       
         this.listadoArr.forEach((tarea, i) => {
             // const tareaDetail = `${tarea.completadoEn !== null ? JSON.stringify(i+1).green : JSON.stringify(i+1).red}. ${tarea.desc} :: ${tarea.completadoEn !== null ? 'Completada' : 'Pendiente'}`;
             // console.log(tareaDetail);
+            const idx = `${i+1}`.green;
+            const {desc, completadoEn} = tarea;
+            const estado = (completadoEn)
+                                ? 'Completada'.green
+                                : 'Pendiente'.red;
+            console.log(`${idx}. ${desc} :: ${estado}`);
+        });
+    }
+
+    listarPendientesCompletadas(completadas = true) {
+        let contador = 0;
+        this.listadoArr.forEach((tarea, i) => {
+            const idx = `${i+1}`.green;
+            const {desc, completadoEn} = tarea;
+            const estado = (completadoEn)
+                                ? 'Completada'.green
+                                : 'Pendiente'.red;
+            if(completadas) {
+                if(completadoEn) {
+                    contador += 1;
+                    console.log(`${(contador + '.').green} ${desc} :: ${completadoEn}`);
+                }
+            } else {
+                if(!completadoEn) {
+                    contador += 1;
+                    console.log(`${(contador + '.').red} ${desc} :: ${estado}`);
+                }
+            }
+        });
+    }
+    listarPendientes(completadas = true) {
+        const tareasCompletadas = this.listadoArr.filter(tarea => tarea.completadoEn !== true)
+        tareasCompletadas.forEach((tarea, i) => {
             const idx = `${i+1}`.green;
             const {desc, completadoEn} = tarea;
             const estado = (completadoEn)
