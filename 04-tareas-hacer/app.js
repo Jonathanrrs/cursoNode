@@ -23,9 +23,9 @@ const main = async () => {
 
     if(tareasDB) {
         /* establecer las tareas */
-        
+        tareas.cargarTareasFromArray(tareasDB);
     }
-    await pausaMenu();
+    
     
     do {
         /* imprimir menú */
@@ -41,7 +41,7 @@ const main = async () => {
             break
         }
        
-        // guardarDB(tareas.listadoArr);
+        guardarDB(tareas.listadoArr);
 
         await pausaMenu();
     } while (opt !== '0');
