@@ -13,7 +13,10 @@ app.use(express.static('public'));
 // });
 
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('home', {
+      nombre: 'Jonathan Sandoval',
+      titulo: 'Curso de Node'
+  });
 });
 
 app.get('/generic', (req,res) => {
