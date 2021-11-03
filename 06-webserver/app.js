@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
  const port = 8080;
 
+app.set('view engine', 'hbs');
+
+
 // Servir contenido estático
 app.use(express.static('public'));
 
@@ -9,8 +12,8 @@ app.use(express.static('public'));
 //   res.send('Home page');
 // });
 
-app.get('/hola-mundo', (req, res) => {
-  res.send('Hello World');
+app.get('/', (req, res) => {
+  res.render('home');
 });
 
 app.get('/generic', (req,res) => {
