@@ -1,8 +1,10 @@
+const fs = require('fs');
 const axios = require('axios');
 
 class Busquedas {
 
-    historial = ['Colima', 'Madrid', 'New York'];
+    historial = [];
+    dbPath = './db/database.json';
 
     constructor() {
         //Todo: leer Db si existe
@@ -46,7 +48,6 @@ class Busquedas {
             return [];
         }
 
-        // return []; /* retornar los lugares */
     }
 
     async climaLugar(lat, lon) {
@@ -71,6 +72,28 @@ class Busquedas {
             console.log(error);
         }
     }
+
+    agregarHistorial(lugar = '') {
+        // prevenir duplicados
+        if(this.historial.includes(lugar.toLocaleLowerCase())) {
+            return;
+        }
+        this.historial.unshift(lugar);
+        
+        // Grabar en DB
+        this.guardarDB();
+    }
+
+    guardarDB() {
+        const payload = {
+            historial: this.historial
+        };
+
+        fs.writeFileSync(this.dbPath, JSON.stringify(payload));
+    }
+    // leerDB() {
+
+    // }
 }
 
 module.exports = Busquedas;
