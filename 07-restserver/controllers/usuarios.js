@@ -9,9 +9,17 @@ const usuariosGet = (req, res = response) => {
 };
 
 const usuariosPost = (req, res) => {
+
+    /* obtener data del body */
+    // const body = req.body;
+    const {nombre, edad} = req.body;
+
+
     res.json({
         ok: true,
-        msg: 'post API - controlador'
+        msg: 'post API - controlador',
+        nombre,
+        edad
     });
 };
 
