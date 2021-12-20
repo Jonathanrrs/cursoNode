@@ -2,6 +2,7 @@ import express, {Application} from 'express';
 /* se puede definir el alias desde aquí */
 import userRoutes from '../routes/usuario';
 import cors from 'cors';
+import db from '../db/connection';
 
 class Server {
 
@@ -16,11 +17,24 @@ class Server {
         this.port = process.env.PORT || '8080';
 
         /* Métodos iniciales */
+        this.dbConnection();
         this.middlewares();
 
         /* Definir mis rutas */
         this.routes();
 
+    }
+
+    async dbConnection() {
+        try {
+            await db.authenticate();
+            console.log('database online');
+            
+        } catch (error) {
+            // throw new Error('error');
+            console.log(error);
+            
+        }
     }
 
     middlewares() {
