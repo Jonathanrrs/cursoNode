@@ -44,4 +44,10 @@ socket.on('crearMensaje', function(mensaje) {
 /* Cuando un usuario entra o sale del chat */
 socket.on('listaPersona', function(personas) {
     console.log('Servidor:', personas);
-})
+});
+
+/* Mensajes privados */
+
+socket.on('mensajePrivado', function(mensaje) {
+    console.log('mensaje privado', mensaje);
+});
