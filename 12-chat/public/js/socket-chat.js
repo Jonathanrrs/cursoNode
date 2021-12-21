@@ -29,18 +29,11 @@ socket.on('disconnect', function() {
 });
 
 
-// Enviar información
-// socket.emit('crearMensaje', {
-//     usuario: 'Fernando',
-//     mensaje: 'Hola Mundo'
-// }, function(resp) {
-//     console.log('respuesta server: ', resp);
-// });
-
 // Escuchar información
 socket.on('crearMensaje', function(mensaje) {
     // console.log('Servidor:', mensaje);
-    renderizarMensajes(mensaje);
+    renderizarMensajes(mensaje, false);
+    scrollBottom();
 });
 
 /* Escuchar ca,bios de usuarios */
